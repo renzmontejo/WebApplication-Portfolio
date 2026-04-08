@@ -1,0 +1,27 @@
+<div class="page">
+  <h2>Backend Management</h2>
+
+  <div class="form-card">
+    <label for="backendName">Backend Name</label>
+    <input
+      id="backendName"
+      type="text"
+      [(ngModel)]="backend.backendName"
+      name="backendName"
+      placeholder="Enter backend name"
+    />
+
+    <button type="button" (click)="save()">Save Backend</button>
+
+    <p>{{ message }}</p>
+  </div>
+
+  <div class="list-card">
+    <h3>Saved Backend Records</h3>
+    <ul>
+      <li *ngFor="let item of backends">
+        {{ item.backendId }} - {{ item.backendName }}
+      </li>
+    </ul>
+  </div>
+</div>

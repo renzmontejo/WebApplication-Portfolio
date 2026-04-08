@@ -1,0 +1,65 @@
+.page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+h2,
+h3 {
+  margin-bottom: 16px;
+}
+
+.form-card,
+.list-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #111;
+  color: white;
+}
+
+button:hover {
+  background: #222;
+}
+
+.message {
+  margin-top: 12px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 14px;
+}

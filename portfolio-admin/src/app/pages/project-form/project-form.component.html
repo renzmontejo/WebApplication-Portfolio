@@ -1,0 +1,38 @@
+<div class="page">
+  <h2>Project Management</h2>
+
+  <div class="form-card">
+    <label for="projectName">Project Name</label>
+    <input
+      id="projectName"
+      type="text"
+      [(ngModel)]="project.projectName"
+      name="projectName"
+      placeholder="Enter project name"
+    />
+
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      [(ngModel)]="project.description"
+      name="description"
+      placeholder="Enter project description"
+      rows="5"
+    ></textarea>
+
+    <button type="button" (click)="save()">Save Project</button>
+
+    <p class="message">{{ message }}</p>
+  </div>
+
+  <div class="list-card">
+    <h3>Saved Project Records</h3>
+    <ul>
+      <li *ngFor="let item of projects">
+        <strong>{{ item.projectName }}</strong><br />
+        <span>ID: {{ item.projectId }}</span><br />
+        <span>{{ item.description }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

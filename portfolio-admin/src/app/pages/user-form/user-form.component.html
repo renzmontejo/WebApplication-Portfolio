@@ -1,0 +1,38 @@
+<div class="page">
+  <h2>User Management</h2>
+
+  <div class="form-card">
+    <label for="fullName">Full Name</label>
+    <input
+      id="fullName"
+      type="text"
+      [(ngModel)]="user.fullName"
+      name="fullName"
+      placeholder="Enter full name"
+    />
+
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      [(ngModel)]="user.email"
+      name="email"
+      placeholder="Enter email"
+    />
+
+    <button type="button" (click)="save()">Save User</button>
+
+    <p class="message">{{ message }}</p>
+  </div>
+
+  <div class="list-card">
+    <h3>Saved User Records</h3>
+    <ul>
+      <li *ngFor="let item of users">
+        <strong>{{ item.fullName }}</strong><br />
+        <span>ID: {{ item.userId }}</span><br />
+        <span>Email: {{ item.email }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
