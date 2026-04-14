@@ -23,10 +23,8 @@ import {
 })
 export class MainLayout {
   getRouteState(outlet: RouterOutlet): string {
-    if (!outlet || !outlet.isActivated) {
-      return '';
-    }
-
-    return outlet.activatedRoute?.routeConfig?.path ?? '';
+    return outlet?.isActivated
+      ? (outlet.activatedRoute?.routeConfig?.path ?? '')
+      : '';
   }
 }

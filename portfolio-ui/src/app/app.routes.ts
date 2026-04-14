@@ -18,5 +18,6 @@ export const routes: Routes = [
       { path: 'schedule-a-meeting', component: ScheduleAMeeting },
       { path: 'send-email', component: SendEmail }
     ]
-  }
+  },
+  { path: '**', redirectTo: '' }
 ];
