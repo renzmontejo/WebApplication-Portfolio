@@ -1,0 +1,188 @@
+<section class="space-y-6">
+  <!-- HEADER -->
+  <div class="rounded-2xl border border-gray-200 bg-white p-6">
+    <p class="text-[12px] font-semibold uppercase tracking-[0.18em] text-gray-400">
+      Schedule a Meeting
+    </p>
+
+    <h1 class="mt-2 text-3xl font-bold leading-tight text-zinc-900">
+      Let’s talk about your project
+    </h1>
+
+    <p class="mt-3 max-w-2xl text-[15px] leading-7 text-gray-600">
+      This page is for clients, recruiters, collaborators, or anyone who wants
+      to discuss a project, service, or possible opportunity. For now, this is
+      a sample booking section you can improve later.
+    </p>
+  </div>
+
+  <!-- MEETING TYPES -->
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+      <div class="mb-3 flex items-center gap-2">
+        <i class="fa-regular fa-comments text-red-500"></i>
+        <h2 class="text-[18px] font-semibold text-zinc-900">
+          Quick Consultation
+        </h2>
+      </div>
+
+      <p class="text-[14px] leading-6 text-gray-600">
+        A short meeting for questions, project ideas, or initial consultation.
+      </p>
+
+      <p class="mt-4 text-[13px] font-medium text-gray-500">
+        Duration: 15–20 mins
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+      <div class="mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-laptop-code text-red-500"></i>
+        <h2 class="text-[18px] font-semibold text-zinc-900">
+          Project Discussion
+        </h2>
+      </div>
+
+      <p class="text-[14px] leading-6 text-gray-600">
+        Best for system features, portfolio projects, UI planning, or backend discussions.
+      </p>
+
+      <p class="mt-4 text-[13px] font-medium text-gray-500">
+        Duration: 30–45 mins
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+      <div class="mb-3 flex items-center gap-2">
+        <i class="fa-regular fa-handshake text-red-500"></i>
+        <h2 class="text-[18px] font-semibold text-zinc-900">
+          Collaboration Meeting
+        </h2>
+      </div>
+
+      <p class="text-[14px] leading-6 text-gray-600">
+        Good for freelance work, partnerships, and long-term collaboration.
+      </p>
+
+      <p class="mt-4 text-[13px] font-medium text-gray-500">
+        Duration: 45–60 mins
+      </p>
+    </div>
+  </div>
+
+  <!-- AVAILABILITY + FORM -->
+  <div class="grid gap-6 lg:grid-cols-2">
+    <!-- AVAILABILITY -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-6">
+      <h2 class="text-[20px] font-semibold text-zinc-900">Availability</h2>
+
+      <p class="mt-2 text-[14px] leading-6 text-gray-600">
+        These are example available time slots only. Later, you can replace this
+        with your real schedule or connect it to Google Calendar or Calendly.
+      </p>
+
+      <div class="mt-5 space-y-3">
+        <div class="rounded-xl border border-gray-200 bg-[#fafafa] px-4 py-3">
+          <p class="text-sm font-medium text-zinc-900">Monday to Friday</p>
+          <p class="mt-1 text-sm text-gray-600">6:00 PM – 9:00 PM</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-[#fafafa] px-4 py-3">
+          <p class="text-sm font-medium text-zinc-900">Saturday</p>
+          <p class="mt-1 text-sm text-gray-600">1:00 PM – 6:00 PM</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-[#fafafa] px-4 py-3">
+          <p class="text-sm font-medium text-zinc-900">Meeting Setup</p>
+          <p class="mt-1 text-sm text-gray-600">Google Meet / Zoom / Messenger</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-6">
+      <h2 class="text-[20px] font-semibold text-zinc-900">Send a Meeting Request</h2>
+
+      <p class="mt-2 text-[14px] leading-6 text-gray-600">
+        This form is sample content for now. Later, you can connect it to email,
+        backend API, or database storage.
+      </p>
+
+      <form class="mt-5 space-y-4" (ngSubmit)="submitMeetingRequest()">
+        <div>
+          <label class="mb-2 block text-sm font-medium text-zinc-800">
+            Full Name
+          </label>
+          <input
+            type="text"
+            name="fullName"
+            [(ngModel)]="meetingForm.fullName"
+            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-red-400"
+            placeholder="Enter your full name"
+          />
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-zinc-800">
+            Email Address
+          </label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="meetingForm.email"
+            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-red-400"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-zinc-800">
+            Meeting Type
+          </label>
+          <select
+            name="meetingType"
+            [(ngModel)]="meetingForm.meetingType"
+            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-red-400"
+          >
+            <option value="">Select a meeting type</option>
+            <option value="Quick Consultation">Quick Consultation</option>
+            <option value="Project Discussion">Project Discussion</option>
+            <option value="Collaboration Meeting">Collaboration Meeting</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-zinc-800">
+            Preferred Date
+          </label>
+          <input
+            type="date"
+            name="preferredDate"
+            [(ngModel)]="meetingForm.preferredDate"
+            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-red-400"
+          />
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-zinc-800">
+            Message
+          </label>
+          <textarea
+            rows="5"
+            name="message"
+            [(ngModel)]="meetingForm.message"
+            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-red-400"
+            placeholder="Write your message here"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
+        >
+          Submit Request
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

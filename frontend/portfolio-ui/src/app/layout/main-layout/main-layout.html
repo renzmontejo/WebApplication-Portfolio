@@ -1,1 +1,274 @@
-<p>main-layout works!</p>
+<div class="min-h-screen bg-white text-black lg:h-screen lg:overflow-hidden">
+  <div class="grid min-h-screen grid-cols-12 lg:h-full">
+
+    <!-- SECTION 1 -->
+    <aside class="col-span-12 border-b border-gray-200 bg-white px-4 py-6 lg:col-span-2 lg:overflow-hidden lg:border-b-0 lg:border-r">
+      <div class="mx-auto flex w-full max-w-[260px] flex-col lg:h-full">
+        <!-- PROFILE CARD AREA -->
+        <div>
+          <!-- PROFILE IMAGE -->
+          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
+            <div class="h-[250px] w-full bg-gray-200"></div>
+          </div>
+
+          <!-- NAME -->
+          <div class="mt-4">
+            <h1 class="text-[25px] font-bold leading-tight text-zinc-900">
+              Gojo Satoru
+            </h1>
+
+            <p class="mt-1 text-[13px] text-gray-400">
+              <i class="fa-solid fa-location-dot fa-s" style="color: rgba(203, 203, 203, 1.00);"></i>
+              Antipolo | Philippines
+            </p>
+          </div>
+
+          <!-- OJT / COMPANY BOX -->
+          <div class="mt-4 flex items-center gap-2 rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-3">
+            <i class="fa-solid fa-ellipsis-vertical" style="color: rgb(20, 190, 0);"></i>
+            <p class="text-[12px] font-semibold leading-5 text-red-400">
+              Web Developer, Desktop Application, Front End, Backend, Data
+            </p>
+          </div>
+        </div>
+
+        <!-- DESKTOP BUTTONS ONLY -->
+        <div class="mt-6 hidden space-y-3 border-t border-gray-200 pt-5 lg:block">
+          <a
+            routerLink="/home"
+            routerLinkActive="bg-red-700"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex w-full items-center justify-center gap-1 rounded-xl bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700"
+          >
+            <i class="fa-regular fa-house" style="color: rgb(0, 0, 0);"></i>
+            Home
+          </a>
+
+          <a
+            routerLink="/schedule-a-meeting"
+            routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+            class="flex w-full items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-zinc-800 transition hover:border-gray-300"
+          >
+            <i class="fa-regular fa-calendar-check" style="color: rgb(0, 0, 0);"></i>
+            Schedule a Meeting
+          </a>
+
+          <a
+            routerLink="/send-email"
+            routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+            class="flex w-full items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-zinc-800 transition hover:border-gray-300"
+          >
+            <i class="fa-regular fa-envelope" style="color: rgb(0, 0, 0);"></i>
+            Send Email
+          </a>
+
+          <a
+            routerLink="/my-services"
+            routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+            class="flex w-full items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-zinc-800 transition hover:border-gray-300"
+          >
+            <i class="fa-solid fa-table-cells" style="color: rgb(0, 0, 0);"></i>
+            My Services
+          </a>
+        </div>
+
+        <!-- BASIC INFO -->
+        <div class="mt-6 border-t border-gray-200 pt-5">
+          <div class="space-y-3 text-[14px] text-gray-500">
+            <p class="leading-6">099912345678</p>
+            <p class="leading-6 break-words">renzmontejo17@gmail.com</p>
+            <p class="leading-6">Quirino Medical Memorial Circle</p>
+            <a
+              href="#"
+              class="inline-block text-[14px] font-medium text-gray-500 hover:underline"
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="mt-6 border-t border-gray-200 pt-5">
+          <div class="flex items-center gap-3">
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MOBILE STICKY NAV -->
+    <div class="col-span-12 sticky top-0 z-40 border-b border-gray-200 bg-white px-4 py-3 shadow-sm lg:hidden">
+      <div class="grid grid-cols-2 gap-2">
+        <a
+          routerLink="/home"
+          routerLinkActive="bg-red-700"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex items-center justify-center gap-1 rounded-xl bg-red-600 px-3 py-3 text-sm font-semibold text-white transition"
+        >
+          <i class="fa-regular fa-house" style="color: rgb(0, 0, 0);"></i>
+          Home
+        </a>
+
+        <a
+          routerLink="/schedule-a-meeting"
+          routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+          class="flex items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-zinc-800"
+        >
+          <i class="fa-regular fa-calendar-check" style="color: rgb(0, 0, 0);"></i>
+          Schedule
+        </a>
+
+        <a
+          routerLink="/send-email"
+          routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+          class="flex items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-zinc-800"
+        >
+          <i class="fa-regular fa-envelope" style="color: rgb(0, 0, 0);"></i>
+          Email
+        </a>
+
+        <a
+          routerLink="/my-services"
+          routerLinkActive="border-sky-300 bg-sky-50 text-sky-700"
+          class="flex items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-medium text-zinc-800"
+        >
+          <i class="fa-solid fa-table-cells" style="color: rgb(0, 0, 0);"></i>
+          Services
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <main class="col-span-12 border-b border-gray-200 bg-white lg:col-span-7 lg:h-full lg:overflow-y-auto lg:border-b-0 lg:border-r">
+      <div class="px-6 py-6 lg:min-h-full">
+        <div [@fadeAnimation]="getRouteState(outlet)">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </div>
+    </main>
+
+    <!-- SECTION 3 -->
+    <aside class="col-span-12 border-gray-200 bg-white px-6 py-6 lg:col-span-3 lg:h-full lg:overflow-hidden lg:border-l">
+      <div class="flex flex-col lg:h-full lg:min-h-0">
+        <div class="lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-1 lg:[scrollbar-width:none] lg:[-ms-overflow-style:none] lg:[&::-webkit-scrollbar]:hidden">
+          <div class="flex flex-col">
+
+            <!-- TOP DIV : TECHNICAL SKILLS -->
+            <div class="border-b border-gray-200 pb-6">
+              <h2 class="mb-6 text-[18px] font-bold uppercase tracking-[0.16em] text-zinc-900">
+                SKILLS
+              </h2>
+
+              <div class="space-y-8">
+                <div>
+                  <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    Frontend
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Angular</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Tailwind CSS</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">HTML</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">CSS</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">TypeScript</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">JavaFX</span>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    Backend
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Java</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Spring Boot</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">PHP</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Laravel</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">REST API</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">MySQL</span>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    Tools
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">IntelliJ IDEA</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Eclipse IDE</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Visual Studio Code</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Docker</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Git</span>
+                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Postman</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTTOM DIV : BEYOND DEV -->
+            <div class="pt-6">
+              <h2 class="mb-6 text-[18px] font-bold uppercase tracking-[0.16em] text-zinc-900">
+                Beyond Dev
+              </h2>
+
+              <div class="space-y-6">
+                <div>
+                  <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    Experience & Habits
+                  </p>
+                  <div class="space-y-3 text-[14px] leading-6 text-gray-600">
+                    <p>• Exploring emerging tech and practical digital tools.</p>
+                    <p>• Reading, watching, and learning from tech and non-tech content.</p>
+                    <p>• Interested in building systems that are clean, usable, and realistic.</p>
+                    <p>• Values consistency, patience, and continuous improvement.</p>
+                  </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-5">
+                  <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                    Currently Exploring
+                  </p>
+                  <div class="space-y-2 text-[14px] leading-6 text-gray-600">
+                    <p>Java Spring Boot architecture</p>
+                    <p>UI layout improvement and portfolio design</p>
+                    <p>Real-world backend and deployment workflows</p>
+                  </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-5">
+                  <p class="text-[13px] leading-6 text-gray-500">
+                    <span class="font-semibold text-red-500">Open to collaborations</span>
+                    on practical projects and meaningful system ideas.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
