@@ -8,13 +8,13 @@
         <div>
           <!-- PROFILE IMAGE -->
           <div class="overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
-            <div class="h-[250px] w-full bg-gray-200"></div>
+            <img class="h-[250px] w-full bg-gray-200" src="profile_image.png"/>
           </div>
 
           <!-- NAME -->
           <div class="mt-4">
             <h1 class="text-[25px] font-bold leading-tight text-zinc-900">
-              Gojo Satoru
+              Renz Montejo
             </h1>
 
             <p class="mt-1 text-[13px] text-gray-400">
@@ -78,14 +78,47 @@
             <p class="leading-6">099912345678</p>
             <p class="leading-6 break-words">renzmontejo17@gmail.com</p>
             <p class="leading-6">Quirino Medical Memorial Circle</p>
-            <a
-              href="#"
-              class="inline-block text-[14px] font-medium text-gray-500 hover:underline"
+            <button
+              type="button"
+              (click)="openResumeModal()"
+              class="inline-block text-[14px] font-medium text-gray-500 hover:underline hover:cursor-pointer"
             >
-              Download Resume
-            </a>
+              View Resume
+            </button>
           </div>
         </div>
+
+        @if (isResumeModalOpen) {
+        <div
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6"
+          (click)="closeResumeModal()"
+        >
+          <div
+            class="relative flex h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            (click)="$event.stopPropagation()"
+          >
+            <div class="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+              <h2 class="text-lg font-semibold text-zinc-900">Resume Preview</h2>
+
+              <button
+                type="button"
+                (click)="closeResumeModal()"
+                class="rounded-lg px-3 py-1.5 text-sm font-medium text-gray-500 transition hover:bg-gray-100 hover:text-zinc-900"
+              >
+                Close
+              </button>
+            </div>
+
+            <div class="flex-1 bg-gray-100">
+              <iframe
+                [src]="resumeUrl"
+                class="h-full w-full border-0"
+                title="Resume Preview"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        }
 
         <!-- SOCIAL ICONS -->
         <div class="mt-6 border-t border-gray-200 pt-5">
