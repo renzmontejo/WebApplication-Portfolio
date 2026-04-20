@@ -123,70 +123,69 @@
 
       <!-- RIGHT SIDE -->
       <div class="px-8 py-8">
-        <form class="space-y-5">
-          <!-- NAME + EMAIL -->
+        <form class="space-y-5" (ngSubmit)="submitContactForm()">
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label class="mb-2 block text-[13px] font-medium text-zinc-900">
-                Name
-              </label>
+              <label class="mb-2 block text-[13px] font-medium text-zinc-900">Name</label>
               <input
                 type="text"
+                name="name"
+                [(ngModel)]="contactForm.name"
                 placeholder="Your name"
                 class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-gray-400 focus:border-red-300"
               />
             </div>
 
             <div>
-              <label class="mb-2 block text-[13px] font-medium text-zinc-900">
-                Email
-              </label>
+              <label class="mb-2 block text-[13px] font-medium text-zinc-900">Email</label>
               <input
                 type="email"
+                name="email"
+                [(ngModel)]="contactForm.email"
                 placeholder="name@example.com"
                 class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-gray-400 focus:border-red-300"
               />
             </div>
           </div>
 
-          <!-- PHONE -->
           <div>
-            <label class="mb-2 block text-[13px] font-medium text-zinc-900">
-              Phone number
-            </label>
+            <label class="mb-2 block text-[13px] font-medium text-zinc-900">Phone number</label>
             <input
               type="text"
+              name="phone"
+              [(ngModel)]="contactForm.phone"
               placeholder="+63 900 000 0000"
               class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-gray-400 focus:border-red-300"
             />
           </div>
 
-          <!-- MESSAGE -->
           <div>
-            <label class="mb-2 block text-[13px] font-medium text-zinc-900">
-              How can I help?
-            </label>
+            <label class="mb-2 block text-[13px] font-medium text-zinc-900">How can I help?</label>
             <textarea
               rows="6"
+              name="message"
+              [(ngModel)]="contactForm.message"
               placeholder="Tell me about your project..."
               class="w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-gray-400 focus:border-red-300"
             ></textarea>
           </div>
 
-          <!-- BUTTON -->
           <div>
             <button
               type="submit"
-              class="inline-flex w-full items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
+              [disabled]="isSubmitting"
+              class="inline-flex w-full items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
             >
-              Send Message
+              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
             </button>
           </div>
 
-          <!-- DIRECT EMAIL -->
-          <p class="text-center text-[13px] text-gray-400">
-            Or email me directly at
-            <span class="font-medium text-red-500 hover:cursor-pointer">renzmontejo@gmail.com</span>
+          <p *ngIf="successMessage" class="text-center text-[13px] text-green-600">
+            {{ successMessage }}
+          </p>
+
+          <p *ngIf="errorMessage" class="text-center text-[13px] text-red-600">
+            {{ errorMessage }}
           </p>
         </form>
       </div>
