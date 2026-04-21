@@ -5,6 +5,7 @@ import { Projects } from './pages/projects/projects';
 import { MyServices } from './pages/my-services/my-services';
 import { ScheduleAMeeting } from './pages/schedule-a-meeting/schedule-a-meeting';
 import { SendEmail } from './pages/send-email/send-email';
+import { ADMIN_ROUTES } from './admin/admin.routes';
 
 export const routes: Routes = [
   {
@@ -19,5 +20,6 @@ export const routes: Routes = [
       { path: 'send-email', component: SendEmail }
     ]
   },
+  ...ADMIN_ROUTES,
   { path: '**', redirectTo: '' }
 ];
