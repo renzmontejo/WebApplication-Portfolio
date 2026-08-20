@@ -7,36 +7,35 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "meeting_requests")
+@Table(name = "experiences")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MeetingRequest {
+public class Experience {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", nullable = false, length = 150)
-    private String fullName;
+    @Column(name = "job_title", nullable = false, length = 150)
+    private String jobTitle;
 
-    @Column(nullable = false, length = 255)
-    private String email;
-
-    @Column(name = "meeting_type", nullable = false, length = 100)
-    private String meetingType;
-
-    @Column(name = "preferred_date")
-    private LocalDate preferredDate;
+    @Column(nullable = false, length = 200)
+    private String company;
 
     @Column(columnDefinition = "TEXT")
-    private String message;
+    private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 30)
-    private MeetingStatus status;
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Column(name = "is_current", nullable = false)
+    private boolean current;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -48,10 +47,6 @@ public class MeetingRequest {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-
-        if (status == null) {
-            status = MeetingStatus.PENDING;
-        }
     }
 
     @PreUpdate

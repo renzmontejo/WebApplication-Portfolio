@@ -3,40 +3,39 @@ package com.myapp.portfolio.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "meeting_requests")
+@Table(name = "services")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MeetingRequest {
+public class PortfolioService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", nullable = false, length = 150)
-    private String fullName;
-
-    @Column(nullable = false, length = 255)
-    private String email;
-
-    @Column(name = "meeting_type", nullable = false, length = 100)
-    private String meetingType;
-
-    @Column(name = "preferred_date")
-    private LocalDate preferredDate;
+    @Column(nullable = false, length = 150)
+    private String title;
 
     @Column(columnDefinition = "TEXT")
-    private String message;
+    private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 30)
-    private MeetingStatus status;
+    @Column(length = 150)
+    private String icon;
+
+    @OneToMany(
+            mappedBy = "service",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @Builder.Default
+    private List<ServiceItem> items = new ArrayList<>();
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -48,10 +47,6 @@ public class MeetingRequest {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-
-        if (status == null) {
-            status = MeetingStatus.PENDING;
-        }
     }
 
     @PreUpdate
