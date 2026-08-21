@@ -2,8 +2,8 @@
   <div class="grid min-h-screen grid-cols-12 lg:h-full">
 
     <!-- SECTION 1 -->
-    <aside class="col-span-12 border-b border-gray-200 bg-white px-4 py-6 lg:col-span-2 lg:overflow-hidden lg:border-b-0 lg:border-r">
-      <div class="mx-auto flex w-full max-w-[260px] flex-col lg:h-full">
+    <aside class="col-span-12 border-b border-gray-200 bg-white px-4 py-6 lg:col-span-2 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:[scrollbar-width:none] lg:[-ms-overflow-style:none] lg:[&::-webkit-scrollbar]:hidden">
+      <div class="mx-auto flex w-full max-w-[260px] flex-col">
         <!-- PROFILE CARD AREA -->
         <div>
           <!-- PROFILE IMAGE -->
@@ -27,7 +27,7 @@
           <div class="mt-4 flex items-center gap-2 rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-3">
             <i class="fa-solid fa-ellipsis-vertical" style="color: rgb(20, 190, 0);"></i>
             <p class="text-[12px] font-semibold leading-5 text-red-400">
-              Full Stack Web Developer, Desktop Application, Front End, Backend Development, Software Engineering
+              Web Developer, Desktop Application, Backend Development, Software Developer
             </p>
           </div>
         </div>
@@ -75,14 +75,14 @@
         <!-- BASIC INFO -->
         <div class="mt-6 border-t border-gray-200 pt-5">
           <div class="space-y-3 text-[14px] text-gray-500">
-            <p class="leading-6">099912345678</p>
-            <p class="leading-6 break-words">renzmontejo17&#64;gmail.com</p>
-            <p class="leading-6">Quirino Medical Memorial Circle</p>
+            <p class="leading-6"><i class="fa-solid fa-phone fa-sm" style="color: rgb(146, 146, 146);"></i>  099912345678</p>
+            <p class="leading-6 break-words"><i class="fa-regular fa-envelope" style="color: rgb(146, 146, 146);"></i>   renzmontejo17&#64;gmail.com</p>
+            <p class="leading-6"><i class="fa-brands fa-quinscape" style="color: rgb(146, 146, 146);"></i>   QMMC</p>
             <button
               type="button"
               (click)="openResumeModal()"
               class="inline-block text-[14px] font-medium text-gray-500 hover:underline hover:cursor-pointer"
-            >
+            ><i class="fa-regular fa-file" style="color: rgb(146, 146, 146);"></i>    
               View Resume
             </button>
           </div>
@@ -128,7 +128,7 @@
               aria-label="LinkedIn"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
             >
-              <i class="fa-brands fa-linkedin-in"></i>
+              <i class="fa-brands fa-linkedin fa-xl" style="color: rgb(14, 34, 157);"></i>
             </a>
 
             <a
@@ -137,7 +137,7 @@
               aria-label="GitHub"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
             >
-              <i class="fa-brands fa-github"></i>
+              <i class="fa-brands fa-github fa-xl" style="color: rgb(7, 7, 7);"></i>
             </a>
 
             <a
@@ -146,7 +146,7 @@
               aria-label="Instagram"
               class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-400 transition hover:text-zinc-700"
             >
-              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-facebook fa-xl" style="color: rgb(14, 34, 157);"></i>
             </a>
           </div>
         </div>
@@ -275,13 +275,13 @@
                   <div class="space-y-4 text-[14px] leading-6 text-gray-600">
                     <!-- Item 1 -->
                     <div class="flex items-center justify-center gap-3">
-                      <i class="fa-solid fa-lightbulb fa-lg w-5 flex-shrink-0 text-center text-black"></i>
+                      <i class="fa-solid fa-lightbulb fa-xl" style="color: rgb(255, 213, 66);"></i>
                       <span class="max-w-xs text-left">Exploring emerging tech and practical digital tools.</span>
                     </div>
                     
                     <!-- Item 2 -->
                     <div class="flex items-center justify-center gap-3">
-                      <i class="fa-solid fa-book-open-reader fa-lg w-5 flex-shrink-0 text-center text-black"></i>
+                      <i class="fa-solid fa-book-open-reader fa-xl" style="color: rgb(185, 123, 63);"></i>
                       <span class="max-w-xs text-left">Reading, watching, and learning from tech and non-tech content.</span>
                     </div>
                     
@@ -293,7 +293,7 @@
                     
                     <!-- Item 4 -->
                     <div class="flex items-center justify-center gap-3">
-                      <i class="fa-solid fa-hourglass fa-lg w-5 flex-shrink-0 text-center text-black"></i>
+                      <i class="fa-solid fa-hourglass fa-xl" style="color: rgb(37, 56, 222);"></i>
                       <span class="max-w-xs text-left">Values consistency, patience, and continuous improvement.</span>
                     </div>
                   </div>

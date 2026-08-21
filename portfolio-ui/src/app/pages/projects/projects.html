@@ -51,9 +51,9 @@
           </p>
 
           <div class="flex flex-col gap-2">
-            <ng-container *ngFor="let tech of project.techStack.split(',')">
+            <ng-container *ngFor="let tech of project.technologies">
               <span class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-zinc-700">
-                {{ tech.trim() }}
+                {{ tech.name.trim() }}
               </span>
             </ng-container>
           </div>
