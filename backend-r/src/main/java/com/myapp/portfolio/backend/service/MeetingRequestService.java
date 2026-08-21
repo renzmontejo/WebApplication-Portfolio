@@ -3,6 +3,7 @@ package com.myapp.portfolio.backend.service;
 import com.myapp.portfolio.backend.dto.request.MeetingRequestCreateRequest;
 import com.myapp.portfolio.backend.dto.request.MeetingRequestStatusRequest;
 import com.myapp.portfolio.backend.dto.response.MeetingRequestResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.MeetingRequestMapper;
 import com.myapp.portfolio.backend.model.MeetingRequest;
 import com.myapp.portfolio.backend.repository.MeetingRequestRepository;
@@ -37,7 +38,7 @@ public class MeetingRequestService {
         MeetingRequest meetingRequest =
                 meetingRequestRepository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException(
+                                new ResourceNotFoundException(
                                         "Meeting request not found with id: " + id
                                 )
                         );
@@ -60,7 +61,7 @@ public class MeetingRequestService {
         MeetingRequest meetingRequest =
                 meetingRequestRepository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException(
+                                new ResourceNotFoundException(
                                         "Meeting request not found with id: " + id
                                 )
                         );
@@ -75,7 +76,7 @@ public class MeetingRequestService {
 
     public void delete(Long id) {
         if (!meetingRequestRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Meeting request not found with id: " + id
             );
         }

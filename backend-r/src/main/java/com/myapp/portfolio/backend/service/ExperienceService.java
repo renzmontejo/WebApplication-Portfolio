@@ -2,6 +2,7 @@ package com.myapp.portfolio.backend.service;
 
 import com.myapp.portfolio.backend.dto.request.ExperienceRequest;
 import com.myapp.portfolio.backend.dto.response.ExperienceResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.ExperienceMapper;
 import com.myapp.portfolio.backend.model.Experience;
 import com.myapp.portfolio.backend.repository.ExperienceRepository;
@@ -20,27 +21,33 @@ public class ExperienceService {
     private final ExperienceMapper experienceMapper;
 
     public ExperienceResponse create(ExperienceRequest request) {
-        Experience experience = experienceMapper.toEntity(request);
 
-        Experience saved = experienceRepository.save(experience);
+        Experience experience =
+                experienceMapper.toEntity(request);
+
+        Experience saved =
+                experienceRepository.save(experience);
 
         return experienceMapper.toResponse(saved);
     }
 
     @Transactional(readOnly = true)
     public ExperienceResponse getById(Long id) {
-        Experience experience = experienceRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException(
-                                "Experience not found with id: " + id
-                        )
-                );
+
+        Experience experience =
+                experienceRepository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Experience not found with id: " + id
+                                )
+                        );
 
         return experienceMapper.toResponse(experience);
     }
 
     @Transactional(readOnly = true)
     public List<ExperienceResponse> getAll() {
+
         return experienceRepository.findAll()
                 .stream()
                 .map(experienceMapper::toResponse)
@@ -51,12 +58,14 @@ public class ExperienceService {
             Long id,
             ExperienceRequest request
     ) {
-        Experience experience = experienceRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException(
-                                "Experience not found with id: " + id
-                        )
-                );
+
+        Experience experience =
+                experienceRepository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Experience not found with id: " + id
+                                )
+                        );
 
         experienceMapper.update(request, experience);
 
@@ -64,8 +73,9 @@ public class ExperienceService {
     }
 
     public void delete(Long id) {
+
         if (!experienceRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Experience not found with id: " + id
             );
         }

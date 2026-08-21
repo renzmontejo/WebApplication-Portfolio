@@ -1,0 +1,63 @@
+package com.myapp.portfolio.backend.controller;
+
+import com.myapp.portfolio.backend.dto.request.TechnologyRequest;
+import com.myapp.portfolio.backend.dto.response.TechnologyResponse;
+import com.myapp.portfolio.backend.service.TechnologyService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/technologies")
+@RequiredArgsConstructor
+public class TechnologyController {
+
+    private final TechnologyService technologyService;
+
+    @PostMapping
+    public ResponseEntity<TechnologyResponse> create(
+            @Valid @RequestBody TechnologyRequest request
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(technologyService.create(request));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TechnologyResponse>> getAll() {
+        return ResponseEntity.ok(
+                technologyService.getAll()
+        );
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TechnologyResponse> getById(
+            @PathVariable Long id
+    ) {
+        return ResponseEntity.ok(
+                technologyService.getById(id)
+        );
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TechnologyResponse> update(
+            @PathVariable Long id,
+            @Valid @RequestBody TechnologyRequest request
+    ) {
+        return ResponseEntity.ok(
+                technologyService.update(id, request)
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(
+            @PathVariable Long id
+    ) {
+        technologyService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}

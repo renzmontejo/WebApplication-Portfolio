@@ -2,6 +2,7 @@ package com.myapp.portfolio.backend.service;
 
 import com.myapp.portfolio.backend.dto.request.ProfileRequest;
 import com.myapp.portfolio.backend.dto.response.ProfileResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.ProfileMapper;
 import com.myapp.portfolio.backend.model.Profile;
 import com.myapp.portfolio.backend.repository.ProfileRepository;
@@ -31,7 +32,7 @@ public class ProfileService {
     public ProfileResponse getById(Long id) {
         Profile profile = profileRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Profile not found with id: " + id
                         )
                 );
@@ -53,7 +54,7 @@ public class ProfileService {
     ) {
         Profile profile = profileRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Profile not found with id: " + id
                         )
                 );
@@ -65,7 +66,7 @@ public class ProfileService {
 
     public void delete(Long id) {
         if (!profileRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Profile not found with id: " + id
             );
         }

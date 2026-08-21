@@ -2,6 +2,7 @@ package com.myapp.portfolio.backend.service;
 
 import com.myapp.portfolio.backend.dto.request.ProjectRequest;
 import com.myapp.portfolio.backend.dto.response.ProjectResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.ProjectMapper;
 import com.myapp.portfolio.backend.model.Project;
 import com.myapp.portfolio.backend.model.Technology;
@@ -42,7 +43,7 @@ public class ProjectService {
 
         Project project = projectRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Project not found with id: " + id
                         )
                 );
@@ -66,7 +67,7 @@ public class ProjectService {
 
         Project project = projectRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Project not found with id: " + id
                         )
                 );
@@ -83,7 +84,7 @@ public class ProjectService {
     public void delete(Long id) {
 
         if (!projectRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Project not found with id: " + id
             );
         }
@@ -101,7 +102,7 @@ public class ProjectService {
                 technologyRepository.findAllById(technologyIds);
 
         if (technologies.size() != technologyIds.size()) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "One or more technology IDs do not exist."
             );
         }

@@ -2,6 +2,7 @@ package com.myapp.portfolio.backend.service;
 
 import com.myapp.portfolio.backend.dto.request.PortfolioServiceRequest;
 import com.myapp.portfolio.backend.dto.response.PortfolioServiceResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.PortfolioServiceMapper;
 import com.myapp.portfolio.backend.model.PortfolioService;
 import com.myapp.portfolio.backend.model.ServiceItem;
@@ -39,7 +40,7 @@ public class PortfolioServiceService {
         PortfolioService service =
                 portfolioServiceRepository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException(
+                                new ResourceNotFoundException(
                                         "Service not found with id: " + id
                                 )
                         );
@@ -62,7 +63,7 @@ public class PortfolioServiceService {
         PortfolioService service =
                 portfolioServiceRepository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException(
+                                new ResourceNotFoundException(
                                         "Service not found with id: " + id
                                 )
                         );
@@ -76,7 +77,7 @@ public class PortfolioServiceService {
 
     public void delete(Long id) {
         if (!portfolioServiceRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Service not found with id: " + id
             );
         }

@@ -3,6 +3,7 @@ package com.myapp.portfolio.backend.service;
 import com.myapp.portfolio.backend.dto.request.ContactMessageCreateRequest;
 import com.myapp.portfolio.backend.dto.request.ContactMessageStatusRequest;
 import com.myapp.portfolio.backend.dto.response.ContactMessageResponse;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.ContactMessageMapper;
 import com.myapp.portfolio.backend.model.ContactMessage;
 import com.myapp.portfolio.backend.repository.ContactMessageRepository;
@@ -32,7 +33,7 @@ public class ContactMessageService {
     public ContactMessageResponse getById(Long id) {
         ContactMessage message = contactMessageRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Contact message not found with id: " + id)
+                        new ResourceNotFoundException("Contact message not found with id: " + id)
                 );
 
         return contactMessageMapper.toResponse(message);
@@ -52,7 +53,7 @@ public class ContactMessageService {
     ) {
         ContactMessage message = contactMessageRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Contact message not found with id: " + id)
+                        new ResourceNotFoundException("Contact message not found with id: " + id)
                 );
 
         contactMessageMapper.updateStatus(request, message);
@@ -62,7 +63,7 @@ public class ContactMessageService {
 
     public void delete(Long id) {
         if (!contactMessageRepository.existsById(id)) {
-            throw new RuntimeException(
+            throw new ResourceNotFoundException(
                     "Contact message not found with id: " + id
             );
         }

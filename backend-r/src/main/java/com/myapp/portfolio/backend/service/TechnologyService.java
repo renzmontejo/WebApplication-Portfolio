@@ -2,6 +2,8 @@ package com.myapp.portfolio.backend.service;
 
 import com.myapp.portfolio.backend.dto.request.TechnologyRequest;
 import com.myapp.portfolio.backend.dto.response.TechnologyResponse;
+import com.myapp.portfolio.backend.exception.ResourceAlreadyExistsException;
+import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.TechnologyMapper;
 import com.myapp.portfolio.backend.model.Technology;
 import com.myapp.portfolio.backend.repository.TechnologyRepository;
@@ -22,7 +24,7 @@ public class TechnologyService {
     public TechnologyResponse create(TechnologyRequest request) {
 
         if (technologyRepository.existsByNameIgnoreCase(request.getName())) {
-            throw new RuntimeException(
+            throw new ResourceAlreadyExistsException(
                     "Technology already exists: " + request.getName()
             );
         }
@@ -38,7 +40,7 @@ public class TechnologyService {
     public TechnologyResponse getById(Long id) {
         Technology technology = technologyRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Technology not found with id: " + id
                         )
                 );
@@ -60,7 +62,7 @@ public class TechnologyService {
     ) {
         Technology technology = technologyRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Technology not found with id: " + id
                         )
                 );
@@ -69,7 +71,7 @@ public class TechnologyService {
                 request.getName(),
                 id
         )) {
-            throw new RuntimeException(
+            throw new ResourceAlreadyExistsException(
                     "Technology already exists: " + request.getName()
             );
         }
@@ -82,7 +84,7 @@ public class TechnologyService {
     public void delete(Long id) {
         Technology technology = technologyRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 "Technology not found with id: " + id
                         )
                 );
