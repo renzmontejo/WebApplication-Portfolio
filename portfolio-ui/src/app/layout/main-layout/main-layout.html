@@ -210,64 +210,60 @@
       <div class="flex flex-col lg:h-full lg:min-h-0">
         <div class="lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-1 lg:[scrollbar-width:none] lg:[-ms-overflow-style:none] lg:[&::-webkit-scrollbar]:hidden">
           <div class="flex flex-col">
-
+ 
             <!-- TOP DIV : TECHNICAL SKILLS -->
             <div class="border-b border-gray-200 pb-6">
               <h2 class="mb-6 text-[18px] font-bold uppercase tracking-[0.16em] text-zinc-900">
                 SKILLS
               </h2>
-
-              <div class="space-y-8">
-                <div>
+ 
+              <div *ngIf="isLoadingSkills" class="text-[13px] text-gray-400">Loading skills...</div>
+ 
+              <div *ngIf="!isLoadingSkills" class="space-y-8">
+                <div *ngIf="groupedTechnologies.FRONTEND?.length">
                   <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                     Frontend
                   </p>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Angular</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Tailwind CSS</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">HTML</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">CSS</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">TypeScript</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">JavaFX</span>
+                    <span
+                      *ngFor="let tech of groupedTechnologies.FRONTEND"
+                      class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700"
+                    >{{ tech.name }}</span>
                   </div>
                 </div>
-
-                <div>
+ 
+                <div *ngIf="groupedTechnologies.BACKEND?.length">
                   <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                     Backend
                   </p>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Java</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Spring Boot</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">PHP</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Laravel</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">REST API</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">MySQL</span>
+                    <span
+                      *ngFor="let tech of groupedTechnologies.BACKEND"
+                      class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700"
+                    >{{ tech.name }}</span>
                   </div>
                 </div>
-
-                <div>
+ 
+                <div *ngIf="groupedTechnologies.TOOLS?.length">
                   <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                     Tools
                   </p>
                   <div class="flex flex-wrap gap-2">
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">IntelliJ IDEA</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Eclipse IDE</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Visual Studio Code</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Docker</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Git</span>
-                    <span class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700">Postman</span>
+                    <span
+                      *ngFor="let tech of groupedTechnologies.TOOLS"
+                      class="rounded-lg border border-gray-200 bg-[#fafafa] px-3 py-1.5 text-[13px] text-zinc-700"
+                    >{{ tech.name }}</span>
                   </div>
                 </div>
               </div>
             </div>
-
+ 
             <!-- BOTTOM DIV : BEYOND DEV -->
             <div class="pt-6">
               <h2 class="mb-6 text-[18px] font-bold uppercase tracking-[0.16em] text-zinc-900">
                 Growth and Mindset
               </h2>
-
+ 
               <div class="space-y-6">
                 <div>
                   <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
@@ -298,11 +294,11 @@
                       <span class="max-w-xs text-left">Values consistency, patience, and continuous improvement.</span>
                     </div>
                   </div>
-
-
-
+ 
+ 
+ 
                 </div>
-
+ 
                 <div class="border-t border-gray-200 pt-5">
                   <p class="mb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                     Currently Exploring
@@ -313,7 +309,7 @@
                     <p><i class="fa-solid fa-circle fa-2xs" style="color: rgb(232, 4, 4);"></i> Real-world backend and deployment workflows</p>
                   </div>
                 </div>
-
+ 
                 <div class="border-t border-gray-200 pt-5">
                   <p class="text-[13px] leading-6 text-gray-500">
                     <span class="font-semibold text-red-500">Open to collaborations</span>
@@ -322,11 +318,11 @@
                 </div>
               </div>
             </div>
-
+ 
           </div>
         </div>
       </div>
     </aside>
-
+ 
   </div>
 </div>

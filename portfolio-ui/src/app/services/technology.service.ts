@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Technology, TechnologyRequest } from '../models/technology.model';
+import { GroupedTechnologies, Technology, TechnologyRequest } from '../models/technology.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,10 @@ export class TechnologyService {
 
   getAll(): Observable<Technology[]> {
     return this.http.get<Technology[]>(this.apiUrl);
+  }
+
+  getGrouped(): Observable<GroupedTechnologies> {
+    return this.http.get<GroupedTechnologies>(`${this.apiUrl}/grouped`);
   }
 
   getById(id: number): Observable<Technology> {
