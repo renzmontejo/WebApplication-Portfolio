@@ -1,5 +1,6 @@
 package com.myapp.portfolio.backend.dto.response;
 
+import com.myapp.portfolio.backend.model.TechnologyCategory;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,5 +14,6 @@ public class TechnologyResponse {
 
     private Long id;
     private String name;
+    private TechnologyCategory category;
     private LocalDateTime createdAt;
 }

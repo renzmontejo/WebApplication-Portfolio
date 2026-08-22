@@ -23,6 +23,10 @@ public class Technology {
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private TechnologyCategory category;
+
     @ManyToMany(mappedBy = "technologies")
     @Builder.Default
     private Set<Project> projects = new HashSet<>();

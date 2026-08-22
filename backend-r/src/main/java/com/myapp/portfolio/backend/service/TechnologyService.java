@@ -6,12 +6,15 @@ import com.myapp.portfolio.backend.exception.ResourceAlreadyExistsException;
 import com.myapp.portfolio.backend.exception.ResourceNotFoundException;
 import com.myapp.portfolio.backend.mapper.TechnologyMapper;
 import com.myapp.portfolio.backend.model.Technology;
+import com.myapp.portfolio.backend.model.TechnologyCategory;
 import com.myapp.portfolio.backend.repository.TechnologyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -56,6 +59,25 @@ public class TechnologyService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public List<TechnologyResponse> getByCategory(TechnologyCategory category) {
+        return technologyRepository.findByCategory(category)
+                .stream()
+                .map(technologyMapper::toResponse)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public Map<TechnologyCategory, List<TechnologyResponse>> getGroupedByCategory() {
+        Map<TechnologyCategory, List<TechnologyResponse>> grouped = new EnumMap<>(TechnologyCategory.class);
+
+        for (TechnologyCategory category : TechnologyCategory.values()) {
+            grouped.put(category, getByCategory(category));
+        }
+
+        return grouped;
+    }
+
     public TechnologyResponse update(
             Long id,
             TechnologyRequest request
@@ -77,6 +99,7 @@ public class TechnologyService {
         }
 
         technology.setName(request.getName());
+        technology.setCategory(request.getCategory());
 
         return technologyMapper.toResponse(technology);
     }

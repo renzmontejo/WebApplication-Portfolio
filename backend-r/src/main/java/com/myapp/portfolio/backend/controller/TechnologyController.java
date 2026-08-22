@@ -2,6 +2,7 @@ package com.myapp.portfolio.backend.controller;
 
 import com.myapp.portfolio.backend.dto.request.TechnologyRequest;
 import com.myapp.portfolio.backend.dto.response.TechnologyResponse;
+import com.myapp.portfolio.backend.model.TechnologyCategory;
 import com.myapp.portfolio.backend.service.TechnologyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/technologies")
@@ -28,9 +30,24 @@ public class TechnologyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TechnologyResponse>> getAll() {
+    public ResponseEntity<List<TechnologyResponse>> getAll(
+            @RequestParam(required = false) TechnologyCategory category
+    ) {
+        if (category != null) {
+            return ResponseEntity.ok(
+                    technologyService.getByCategory(category)
+            );
+        }
+
         return ResponseEntity.ok(
                 technologyService.getAll()
+        );
+    }
+
+    @GetMapping("/grouped")
+    public ResponseEntity<Map<TechnologyCategory, List<TechnologyResponse>>> getGrouped() {
+        return ResponseEntity.ok(
+                technologyService.getGroupedByCategory()
         );
     }
 
